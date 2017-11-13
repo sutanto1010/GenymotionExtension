@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Forms;
 using GenymotionExtension.ViewModels;
 
@@ -17,11 +18,6 @@ namespace GenymotionExtension.Views
         {
             InitializeComponent();
             DataContext = new IndexViewModel();
-        }
-
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
             var devices = VBoxHelper.GetVirtualDevices();
             foreach (var virtualDevice in devices)
             {

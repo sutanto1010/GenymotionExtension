@@ -22,29 +22,31 @@
                                 Margin="0,10,0,0">
             <syncfusion:SfAccordionItem Header="Disk">
                 <StackPanel Margin="10">
-                    <CheckBox Content="Enable Throtling"
+                    <CheckBox Content="Enable Throttling"
                               IsChecked="{Binding ThrottlingDisk}" />
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Speed: "></Label>
-                        <syncfusion:UpDown Value="10" 
+                        <syncfusion:UpDown Value="{Binding LimitDisk}" 
                                            Width="100" 
                                            IsEnabled="{Binding ThrottlingDisk}" />
                         <Label Content="Kbps" />
                     </StackPanel>
-                    <Button Content="Apply" 
-                            HorizontalAlignment="Left"
-                            Width="200"
-                            Padding="5" 
-                            Margin="0,10,0,0" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button Content="Apply" 
+                                Command="{Binding CmdThrottlingDisk}"
+                                HorizontalAlignment="Left"
+                                Width="200"
+                                Padding="5" />
+                    </StackPanel>
                 </StackPanel>
             </syncfusion:SfAccordionItem>
             <syncfusion:SfAccordionItem Header="Memory">
                 <StackPanel Margin="10">
-                    <CheckBox Content="Enable Throtling"
+                    <CheckBox Content="Enable Throttling"
                               IsChecked="{Binding ThrottlingMemory}" />
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Speed: "></Label>
-                        <syncfusion:UpDown Value="10"
+                        <syncfusion:UpDown Value="{Binding LimitMemory}" 
                                            Width="100" 
                                            IsEnabled="{Binding ThrottlingMemory}" />
                         <Label Content="Kbps" />
@@ -58,11 +60,11 @@
             </syncfusion:SfAccordionItem>
             <syncfusion:SfAccordionItem Header="Network">
                 <StackPanel Margin="10">
-                    <CheckBox Content="Enable Throtling"
+                    <CheckBox Content="Enable Throttling"
                               IsChecked="{Binding ThrottlingNetwork}" />
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Speed: "></Label>
-                        <syncfusion:UpDown Value="10" 
+                        <syncfusion:UpDown Value="{Binding LimitNetwork}" 
                                            Width="100" 
                                            IsEnabled="{Binding ThrottlingNetwork}" />
                         <Label Content="Kbps" />
