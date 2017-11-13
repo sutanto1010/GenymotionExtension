@@ -25,6 +25,8 @@ namespace GenymotionExtension.ViewModels
         {
             Devices = new ObservableCollection<VirtualDevice>();
             CmdThrottlingDisk = new DelegateCommand(ApplyThrottlingDisk, (i)=> true);
+            CmdThrottlingMemory = new DelegateCommand(ApplyThrottlingMemory, (i)=> true);
+            CmdThrottlingNetwork = new DelegateCommand(ApplyThrottlingNetwork, (i)=> true);
         }
 
         public double LimitDisk
@@ -58,6 +60,16 @@ namespace GenymotionExtension.ViewModels
         }
 
         private void ApplyThrottlingDisk(object obj)
+        {
+            
+        }
+
+        private void ApplyThrottlingMemory(object obj)
+        {
+            
+        }
+
+        private void ApplyThrottlingNetwork(object obj)
         {
             
         }
