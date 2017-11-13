@@ -22,7 +22,11 @@ namespace GenymotionExtension.Views
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
-            var temp = VBoxHelper.GetCommandResult("list vms");
+            var devices = VBoxHelper.GetVirtualDevices();
+            foreach (var virtualDevice in devices)
+            {
+                Model.Devices.Add(virtualDevice);
+            }
         }
     }
 }

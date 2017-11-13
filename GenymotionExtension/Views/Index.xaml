@@ -6,48 +6,72 @@
         xmlns:local="clr-namespace:GenymotionExtension.Views"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="Genymotion Extension" Height="300" Width="300">
+        Title="Genymotion Extension" 
+        Height="600" 
+        Width="400">
     <Grid Margin="10,10,8,8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"  />
         </Grid.RowDefinitions>
-        <syncfusion:DropDownButton Grid.Row="0" 
-                                   Label="Choose Virtual Device"
-                                   HorizontalAlignment="Left" 
-                                   Margin="10,0,0,0" 
-                                   VerticalAlignment="Center" Width="272"/>
-        <syncfusion:SfAccordion Grid.Row="1" x:Name="accordion" SelectionMode="ZeroOrMore" Margin="0,10,0,0">
+        <syncfusion:ComboBoxAdv ItemsSource="{Binding Devices}"               
+                                DisplayMemberPath="Name"
+                                SelectedValue="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <syncfusion:SfAccordion Grid.Row="1" x:Name="accordion" 
+                                SelectionMode="ZeroOrMore" 
+                                Margin="0,10,0,0">
             <syncfusion:SfAccordionItem Header="Disk">
                 <StackPanel Margin="10">
-                    <RadioButton Content="Disable Throtling"></RadioButton>
-                    <RadioButton Content="Enable Throtling"></RadioButton>
-                    <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="Enable Throtling"
+                              IsChecked="{Binding ThrottlingDisk}" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Speed: "></Label>
-                        <TextBox Width="50" 
-                                 TextAlignment="Center"
-                                 Padding="5"
-                                 VerticalAlignment="Center" 
-                                 HorizontalAlignment="Center"></TextBox> 
-                        <Label Content="Mbps"></Label>
-                        <Button Content="Apply" Padding="5"></Button>
+                        <syncfusion:UpDown Value="10" 
+                                           Width="100" 
+                                           IsEnabled="{Binding ThrottlingDisk}" />
+                        <Label Content="Kbps" />
                     </StackPanel>
+                    <Button Content="Apply" 
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Padding="5" 
+                            Margin="0,10,0,0" />
                 </StackPanel>
             </syncfusion:SfAccordionItem>
             <syncfusion:SfAccordionItem Header="Memory">
-                <StackPanel>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
+                <StackPanel Margin="10">
+                    <CheckBox Content="Enable Throtling"
+                              IsChecked="{Binding ThrottlingMemory}" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Speed: "></Label>
+                        <syncfusion:UpDown Value="10"
+                                           Width="100" 
+                                           IsEnabled="{Binding ThrottlingMemory}" />
+                        <Label Content="Kbps" />
+                    </StackPanel>
+                    <Button Content="Apply" 
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Padding="5" 
+                            Margin="0,10,0,0" />
                 </StackPanel>
             </syncfusion:SfAccordionItem>
             <syncfusion:SfAccordionItem Header="Network">
-                <StackPanel>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
-                    <Label Content="1"></Label>
+                <StackPanel Margin="10">
+                    <CheckBox Content="Enable Throtling"
+                              IsChecked="{Binding ThrottlingNetwork}" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Speed: "></Label>
+                        <syncfusion:UpDown Value="10" 
+                                           Width="100" 
+                                           IsEnabled="{Binding ThrottlingNetwork}" />
+                        <Label Content="Kbps" />
+                    </StackPanel>
+                    <Button Content="Apply" 
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Padding="5" 
+                            Margin="0,10,0,0" />
                 </StackPanel>
             </syncfusion:SfAccordionItem>
         </syncfusion:SfAccordion>

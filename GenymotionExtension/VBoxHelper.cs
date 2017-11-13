@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using GenymotionExtension.Models;
+using Syncfusion.Windows.Shared;
 
 namespace GenymotionExtension
 {
@@ -24,6 +27,24 @@ namespace GenymotionExtension
             }
 
             return line;
+        }
+
+        public static IList<VirtualDevice> GetVirtualDevices()
+        {
+            var devices = new List<VirtualDevice>();
+            var temp = VBoxHelper.GetCommandResult("list vms");
+            temp = temp.Replace("\r\n","\n").Replace("\"","");
+            var lines = temp.Split('\n');
+            foreach (var line in lines)
+            {
+                if(line.IsNullOrWhiteSpace())
+                    continue;
+                var idIndex = line.IndexOf("{");
+                var id = Guid.Parse(line.Substring(idIndex));
+                var name = line.Substring(0, idIndex-1);
+                devices.Add(new VirtualDevice(){Id = id, Name = name});
+            }
+            return devices;
         }
     }
 }
